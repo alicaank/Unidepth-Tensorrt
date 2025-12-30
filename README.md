@@ -2,12 +2,11 @@
 
 High-performance C++/CUDA + TensorRT implementation of **UniDepth V2** with **camera intrinsics input** and **uncertainty/confidence outputs**.
 
-This folder is designed to be a clean, reproducible **TensorRT inference subproject**:
-
 - **C++ API**: `include/unidepth_v2.h`
 - **CUDA kernels**: `kernels/`
 - **CLI demo**: `examples/image_inference.cpp` (built as `build/image_inference`)
 - **Python tooling** (optional): export ONNX + build TensorRT engines
+
 
 ## What you get
 
@@ -28,18 +27,6 @@ This folder is designed to be a clean, reproducible **TensorRT inference subproj
 - FP16 engines
 - CUDA Graph support (optional)
 - GPU preprocessing / postprocessing (CUDA kernels)
-
-## Repository hygiene
-
-Large and generated artifacts are intentionally **not tracked**.
-
-- `build/`
-- `models/` (exported ONNX)
-- `engines/` (TensorRT `.trt` engines)
-- `comparison_results/`
-- generated outputs like `*.png`, `*.ply`, `*.npy`
-
-See `.gitignore`.
 
 ## Prerequisites
 
@@ -125,9 +112,7 @@ This repo intentionally does **not** publish estimated speeds.
 
 | Metric | Value |
 |---|---|
-| Inference (first run) | 25 ms |
-| Inference (CUDA Graph) | 2.28 ms |
-| Throughput (FPS) | 438.6 FPS |
+| Inference | 25 ms |
 
 Accuracy summary (PyTorch vs TensorRT FP16, same input):
 
@@ -140,15 +125,6 @@ Accuracy summary (PyTorch vs TensorRT FP16, same input):
 
 - **Confidence**: higher is better
 - **Uncertainty**: higher is worse (`1 / (confidence + 1e-6)`)
-
-## Comparison with Depth Anything V2
-
-| Feature | Depth Anything V2 | UniDepth |
-|---|---|---|
-| Depth type | Relative | Metric (meters) |
-| Camera intrinsics input | No | Yes |
-| Uncertainty output | No | Yes |
-| 3D point output | No | Yes |
 
 ## Camera intrinsics notes
 
@@ -180,17 +156,4 @@ python3 python/build_engine.py \
   --workspace 6144
 ```
 
-## Directory layout
-
-```
-tensorrt/
-  include/
-  kernels/
-  src/
-  examples/
-  python/
-  CMakeLists.txt
-  build.sh
-  README.md
-```
 
