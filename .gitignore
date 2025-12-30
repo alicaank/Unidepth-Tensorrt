@@ -1,0 +1,33 @@
+# Build artifacts
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+
+# TensorRT engines / models (too large for git)
+engines/
+models/
+*.trt
+*.engine
+*.onnx
+*.onnx.data
+
+# Local outputs
+comparison_results/
+*.npy
+*.ply
+
+# Generated images (demo outputs, comparisons, etc.)
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.tiff
+*.webp
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
